@@ -106,7 +106,7 @@ app = Flask(__name__)
 @app.route("/<text>")
 def hello_world(text):
     fig_path = 'images/%s.png' % text
-    generate(text).savefig(fig_path)
+    generate(text).save(fig_path)
     app.send_file(fig_path, mimetype='image/png')
 
 
