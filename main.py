@@ -25,7 +25,7 @@ import random
 
 from matplotlib.pyplot import imshow
 
-from flask import Flask
+from flask import Flask, send_file
 
 #%matplotlib inline
 
@@ -97,13 +97,18 @@ def generate(caption, copies=2):
             im = np.transpose(im, (1, 2, 0))
             #             im = Image.fromarray(im)
             imgs.append(im)
-    imshow(imgs[-1])
+    return imgs[-1]
+
 
 app = Flask(__name__)
 
-@app.route('/<text>')
+
+@app.route("/<text>")
 def hello_world(text):
-  return generate(text)
+    fig_path = 'images/%s.png' % text
+    generate(text).savefig(fig_path)
+    app.send_file(fig_path, mimetype='image/png')
+
 
 if __name__ == "__main__":
     x = pickle.load(open("data/birds/captions.pickle", "rb"))
