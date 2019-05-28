@@ -3,8 +3,8 @@ easydict==1.9
 Flask==1.0.3
 matplotlib==3.1.0
 numpy==1.16.3
-skimage==0.0
+scikit-image
 torch==1.1.0
 torchvision==0.3.0
 googledrivedownloader
-
+requests

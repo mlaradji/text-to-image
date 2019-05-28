@@ -1,5 +1,22 @@
 # AttnGAN Inference via Pre-trained Model
 
+## Running server
+1. Create a virtual environment
+```
+apt-get install virtualenv
+virtualenv venv --python=python3
+source venv/bin/activate
+pip install -r requirements.txt # long time
+```
+2. Download the data
+```
+python prep.py
+```
+3. Run the server on 0.0.0.0:5000
+```
+python main.py
+```
+
 ## Running inference
 There are three steps involved.
 1. Create the container (optionally choose the cpu or gpu dockerfile: 

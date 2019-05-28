@@ -23,7 +23,7 @@ import os
 import time
 import random
 
-from matplotlib.pyplot import imshow
+import matplotlib.pyplot as plt
 
 from flask import Flask, send_file
 
@@ -97,8 +97,8 @@ def generate(caption, copies=2):
             im = np.transpose(im, (1, 2, 0))
             #             im = Image.fromarray(im)
             imgs.append(im)
-    return Image.fromarray(imgs[-1])
-
+    return imgs[-1]
+#Image.fromarray(
 
 app = Flask(__name__)
 
@@ -106,7 +106,8 @@ app = Flask(__name__)
 @app.route("/<text>")
 def hello_world(text):
     fig_path = 'images/%s.png' % text
-    generate(text).save(fig_path)
+    plt.imsave(fig_path, generate(text))
+    #generate(text).save(fig_path)
     return send_file(fig_path, mimetype='image/png')
 
 
@@ -134,4 +135,4 @@ if __name__ == "__main__":
     torch.manual_seed(seed)
 
     # Flask
-    app.run()
+    app.run(host= '0.0.0.0')
