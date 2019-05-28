@@ -25,7 +25,7 @@ import random
 
 from matplotlib.pyplot import imshow
 
-from aiohttp import web
+from flask import Flask
 
 #%matplotlib inline
 
@@ -99,12 +99,11 @@ def generate(caption, copies=2):
             imgs.append(im)
     imshow(imgs[-1])
 
+app = Flask(__name__)
 
-# aiohttp stuff
-async def create_image(request):
-    generate(request.match_info["text"])
-    return web.Response()
-
+@app.route('/{text}')
+def hello_world():
+  return generate(request.match_info["text"])
 
 if __name__ == "__main__":
     x = pickle.load(open("data/birds/captions.pickle", "rb"))
@@ -129,7 +128,5 @@ if __name__ == "__main__":
     np.random.seed(seed)
     torch.manual_seed(seed)
 
-    # AioHTTP stuff.
-    app = web.Application()
-    app.add_routes([web.get("/{text}", create_image)])
-    web.run_app(app)
+    # Flask
+    app.run()
