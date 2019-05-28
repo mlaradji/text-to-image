@@ -101,9 +101,9 @@ def generate(caption, copies=2):
 
 app = Flask(__name__)
 
-@app.route('/{text}')
-def hello_world(request):
-  return generate(request.match_info["text"])
+@app.route('/<text>')
+def hello_world(text):
+  return generate(text)
 
 if __name__ == "__main__":
     x = pickle.load(open("data/birds/captions.pickle", "rb"))
