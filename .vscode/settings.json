@@ -1,0 +1,4 @@
+{
+    "python.formatting.provider": "black",
+    "python.pythonPath": "/home/ubuntu/.conda/envs/cloudpbx.regisseur/bin/python"
+}
