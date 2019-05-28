@@ -102,7 +102,7 @@ def generate(caption, copies=2):
 app = Flask(__name__)
 
 @app.route('/{text}')
-def hello_world():
+def hello_world(request):
   return generate(request.match_info["text"])
 
 if __name__ == "__main__":
