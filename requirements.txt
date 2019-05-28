@@ -1,7 +1,8 @@
-Flask
-python-dateutil
-easydict
-scikit-image
-azure-storage-blob
-applicationinsights
-libmc
+Pillow==6.0.0
+easydict==1.9
+Flask==1.0.3
+matplotlib==3.1.0
+numpy==1.16.3
+skimage==0.0
+torch==1.1.0
+torchvision==0.3.0
