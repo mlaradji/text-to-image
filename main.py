@@ -107,7 +107,7 @@ app = Flask(__name__)
 def hello_world(text):
     fig_path = 'images/%s.png' % text
     generate(text).save(fig_path)
-    app.send_file(fig_path, mimetype='image/png')
+    return send_file(fig_path, mimetype='image/png')
 
 
 if __name__ == "__main__":
