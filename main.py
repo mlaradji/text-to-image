@@ -97,7 +97,7 @@ def generate(caption, copies=2):
             im = np.transpose(im, (1, 2, 0))
             #             im = Image.fromarray(im)
             imgs.append(im)
-    return imgs[-1]
+    return Image.fromarray(imgs[-1])
 
 
 app = Flask(__name__)
